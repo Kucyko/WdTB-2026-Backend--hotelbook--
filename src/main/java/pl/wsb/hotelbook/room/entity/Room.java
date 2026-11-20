@@ -1,8 +1,11 @@
 package pl.wsb.hotelbook.room.entity;
 
 import jakarta.persistence.*;
+import pl.wsb.hotelbook.reservation.entity.Reservation;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "room")
@@ -31,6 +34,9 @@ public class Room {
     @Column(name = "available", nullable = false)
     private Boolean available;
 
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservations = new ArrayList<>();
+
     protected Room() {
     }
 
@@ -50,4 +56,5 @@ public class Room {
     public Integer getCapacity() { return capacity; }
     public BigDecimal getPricePerNight() { return pricePerNight; }
     public Boolean getAvailable() { return available; }
+    public List<Reservation> getReservations() { return reservations; }
 }

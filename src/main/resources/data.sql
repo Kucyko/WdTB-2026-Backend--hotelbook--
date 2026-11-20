@@ -17,17 +17,17 @@ values ('101', 1, 'SINGLE', 1, 220.00, true),
        ('201', 2, 'DOUBLE', 3, 390.00, false),
        ('301', 3, 'SUITE', 4, 750.00, true);
 
--- ===== LAB 02 · guest =====
-insert into guest (full_name, email, phone, registered_on, street, city, postal_code, country)
+-- ===== LAB 03 · guest =====
+insert into guest (full_name, email, phone, registered_on, street, city, postal_code, country, user_account_id)
 values ('Anna Kowalska', 'anna.kowalska@example.com', '600100200', '2026-09-15', 'Ruska 12', 'Wrocław', '50-079',
-        'Polska'),
-       ('Piotr Zieliński', 'piotr.zielinski@example.com', null, '2026-10-02', null, null, null, null),
+        'Polska', 1),
+       ('Piotr Zieliński', 'piotr.zielinski@example.com', null, '2026-10-02', null, null, null, null, 2),
        ('Maria Lewandowska', 'maria.lew@example.com', '501300400', '2026-10-20', 'Długa 5/7', 'Kraków', '31-147',
-        'Polska');
+        'Polska', null);
 
--- ===== LAB 02 · reservation =====
-insert into reservation (reservation_number, check_in, check_out, guests_count, total_price, status)
-values ('HB-2026-0001', '2026-11-06', '2026-11-08', 1, 440.00, 'CONFIRMED'),
-       ('HB-2026-0002', '2026-11-14', '2026-11-17', 2, 1020.00, 'PENDING'),
-       ('HB-2026-0003', '2026-10-10', '2026-10-12', 4, 1500.00, 'COMPLETED'),
-       ('HB-2026-0004', '2026-12-23', '2026-12-27', 2, 1360.00, 'CANCELLED');
+-- ===== LAB 03 · reservation =====
+insert into reservation (reservation_number, check_in, check_out, guests_count, total_price, status, guest_id, room_id)
+values ('HB-2026-0001', '2026-11-06', '2026-11-08', 1, 440.00, 'CONFIRMED', 1, 1),
+       ('HB-2026-0002', '2026-11-14', '2026-11-17', 2, 1020.00, 'PENDING', 1, 2),
+       ('HB-2026-0003', '2026-10-10', '2026-10-12', 4, 1500.00, 'COMPLETED', 2, 4),
+       ('HB-2026-0004', '2026-12-23', '2026-12-27', 2, 1360.00, 'CANCELLED', 3, 2);

@@ -1,8 +1,12 @@
 package pl.wsb.hotelbook.guest.entity;
 
 import jakarta.persistence.*;
+import pl.wsb.hotelbook.account.domain.UserAccount;
+import pl.wsb.hotelbook.reservation.entity.Reservation;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "guest")
@@ -27,6 +31,13 @@ public class Guest {
     @Embedded
     private Address address;
 
+    @OneToMany(mappedBy = "guest")
+    private List<Reservation> reservations = new ArrayList<>();
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_account_id")
+    private UserAccount account;
+
     protected Guest() {
     }
 
@@ -44,4 +55,6 @@ public class Guest {
     public String getPhone() { return phone; }
     public LocalDate getRegisteredOn() { return registeredOn; }
     public Address getAddress() { return address; }
+    public List<Reservation> getReservations() { return reservations; }
+    public UserAccount getAccount() { return account; }
 }
