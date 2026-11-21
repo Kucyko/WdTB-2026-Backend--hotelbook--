@@ -31,3 +31,21 @@ values ('HB-2026-0001', '2026-11-06', '2026-11-08', 1, 440.00, 'CONFIRMED', 1, 1
        ('HB-2026-0002', '2026-11-14', '2026-11-17', 2, 1020.00, 'PENDING', 1, 2),
        ('HB-2026-0003', '2026-10-10', '2026-10-12', 4, 1500.00, 'COMPLETED', 2, 4),
        ('HB-2026-0004', '2026-12-23', '2026-12-27', 2, 1360.00, 'CANCELLED', 3, 2);
+
+-- ===== LAB 03 · hotel_service =====
+insert into hotel_service (name, price, description, available) values
+       ('Śniadanie', 45.00, 'Bufet śniadaniowy', true),
+       ('Parking', 30.00, 'Miejsce na parkingu podziemnym', true),
+       ('Spa', 120.00, 'Wejście do strefy spa', true);
+
+-- ===== LAB 03 · payment =====
+insert into payment (reservation_id, amount, method, paid_at, refunded) values
+       (1, 440.00, 'CARD', '2026-11-01 10:15:00', false),
+       (2, 500.00, 'TRANSFER', '2026-11-10 09:00:00', false),
+       (3, 1500.00, 'CARD', '2026-10-01 18:30:00', false);
+
+-- ===== LAB 03 · reservation_service =====
+insert into reservation_service (reservation_id, service_id, quantity, unit_price, note) values
+       (1, 1, 2, 45.00, null),
+       (2, 1, 2, 45.00, 'bez laktozy'),
+       (2, 2, 1, 30.00, null);
